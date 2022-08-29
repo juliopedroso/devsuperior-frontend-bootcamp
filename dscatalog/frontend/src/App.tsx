@@ -1,9 +1,11 @@
-import Home from 'pages/Home';
+import Routers from 'Routers';
+
 import './App.css';
 
 const App = () => {
   return (
-    <Home/>
+    
+    <Routers/>
   );
 }
 
