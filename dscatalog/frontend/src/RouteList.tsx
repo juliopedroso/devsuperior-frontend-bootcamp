@@ -5,7 +5,7 @@ import Home from "pages/Home";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
-const Routers = () => (
+const RouteList = () => (
     <BrowserRouter>
         <Navbar />
         <Routes>
@@ -16,4 +16,4 @@ const Routers = () => (
     </BrowserRouter>
 );
 
-export default Routers;
+export default RouteList;
