@@ -9,7 +9,7 @@ const NavBar = () =>{
                     <h4>Carros Top</h4>
                 </a>
                 <button
-                    className="navbar-toggler"
+                    className="navbar-toggler custom-toggler"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#carrostop-navbar"

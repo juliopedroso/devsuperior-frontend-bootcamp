@@ -1,23 +1,29 @@
-.nav-logo-text, .nav-logo-text:hover{
-    color:#00285F;
-}
-
 .main-nav {
     min-height: 70px;
     padding-left: 20px;
     background-color: #F78B00;
-
 }
 
 .nav-logo-text, .nav-logo-text:hover{
     color:#00285F;
 }
 
-.main-menu {
-    display: flex;
+.custom-toggler.navbar-toggler {
+    border-color: #00285F;
+}
+/* Setting the stroke to green using rgb values (0, 128, 0) */
+  
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 40, 95, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.main-menu {    
+    display: flex;    
     font-size: 18px;
-    width: 380px ;
-    justify-content: space-between;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 50px;
+
 }
 
 .main-menu a{
@@ -33,11 +39,3 @@
     color: #00285F;
     font-weight: bold;
 }
-
-.custom-toggler .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-  }
-  
-  .custom-toggler.navbar-toggler {
-    border-color: rgb(255,102,203);
-  } 
