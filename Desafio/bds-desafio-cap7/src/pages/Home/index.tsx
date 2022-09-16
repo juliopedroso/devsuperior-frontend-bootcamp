@@ -18,10 +18,10 @@ const Home = () => {
             </div>
             <div className="home-button-card">
                 <div>
-                    <button className="btn btn-primary">
-                        <h5>VER CATÁLOGO</h5>
+                    <button className="btn">
+                        <h6>VER CATÁLOGO</h6>
                     </button>
-                    <h4>Comece agora a navegar</h4>
+                    <h5>Comece agora a navegar</h5>
                 </div>
             </div>
         </div>
