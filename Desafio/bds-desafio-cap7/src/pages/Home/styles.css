@@ -4,6 +4,7 @@
     padding:  20px 10px 10px 10px;
     font-size: 20px;
     text-align: center;
+    gap: 20px;
 }
 
 .home-card{
@@ -11,13 +12,14 @@
     flex-direction: column-reverse;
     background-color: #00285F;
     box-shadow: 0px 4px 20px rgba(0,0,0, 0.25);
-    border-radius: 20px;    
+    border-radius: 10px;    
 
 }
 
 .home-card-content {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     padding: 10px 10px 10px 10px;
     color: #FFFFFF;
@@ -32,25 +34,36 @@
 }
 
 .home-card-content p{
-    font-size: 0.6em;
+    font-size: 14px;
+    font-weight: 400;
     width: 260px;
-    margin-bottom: 30px ;    
+    margin-bottom: 50px ;    
+    margin-top: 15px ;    
+}
+
+
+.home-card-image {
+    padding: 60px 30px 30px 30px;
+
 }
 
 .home-card-image img{
-    padding: 50px 15px;
+
     height: auto ;
     width:100%;
+    max-width:345px;
  
 }
 
 .home-button-card {
-    padding:  20px;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: #EDEDED;
-    border-radius: 20px;    
-    height:120px;
+    border-radius: 10px;    
+    height:125px;
     align-items: center;
+    gap:10px;
 }
 
 .home-button-card button{
@@ -61,13 +74,47 @@
 }
 
 .home-button-card h6{
-    font-size: 0.8em;
-    font-weight: 400;
+    font-size: 14px;
+    font-weight: 700;
     color: #FFFFFF;    
 }
 
 .home-button-card h5 {
-    font-size: 0.8em;
+    font-size: 18px;
     color: #585858;
     font-weight:400;    
+
+}
+
+
+
+
+
+@media (min-width:576px){
+
+    .home-card-content {
+        padding: 30px 20px 30px 20px;
+    }
+
+    .home-card-content h1{
+        font-size: 36px;
+        width: 420px;
+    }
+    
+    .home-card-content p{
+        font-size: 18px;
+        width: 420px;
+        margin-top: 0px ;    
+    }
+    
+    .home-card-image img{
+        max-width:345px;
+    }
+
+    .home-button-card {
+        flex-direction: row;
+        gap:20px;
+        padding-left: 85px;
+        justify-content: flex-start;
+    }
 }

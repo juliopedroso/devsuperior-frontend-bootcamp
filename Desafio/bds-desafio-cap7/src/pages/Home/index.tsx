@@ -14,15 +14,14 @@ const Home = () => {
                 <div className="home-card-image">
                     <img src={MainImage} alt="Imagem Principal" />
                 </div>
-
             </div>
+            
             <div className="home-button-card">
-                <div>
                     <button className="btn">
                         <h6>VER CATÁLOGO</h6>
                     </button>
                     <h5>Comece agora a navegar</h5>
-                </div>
+
             </div>
         </div>
     );
