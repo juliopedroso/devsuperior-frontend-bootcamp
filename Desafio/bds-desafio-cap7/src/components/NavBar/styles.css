@@ -1,8 +1,12 @@
 .main-nav {
     min-height: 70px;
+    
     padding-left: 20px;
     padding-right: 20px;
     background-color: #F78B00;
+}
+.container-fluid{
+    max-width:980px;
 }
 
 .nav-logo-text, .nav-logo-text:hover{
@@ -23,7 +27,7 @@
     font-size: 18px;
     width: 100%;
     justify-content: flex-end;
-    
+    max-width:960px;
     gap: 50px;
 
 }
