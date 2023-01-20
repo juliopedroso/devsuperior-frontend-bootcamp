@@ -1,0 +1,12 @@
+.search-bar-container {
+    padding: 20px 10px 20px 10px;
+    background-color: #EDEDED;
+    border-radius: 10px;   
+}
+
+.search-btn{
+    border-radius: 0px 10px 10px 0px;
+    background-color: #00285F;
+    color: white;
+        
+}
