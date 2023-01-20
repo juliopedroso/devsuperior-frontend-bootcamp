@@ -1,12 +1,20 @@
 .home-container{
     display: flex;
+    flex-direction: column;  
+    text-align: center;
+    align-items: center;
+}
+
+.home-container-content{
+    display: flex;
     flex-direction: column;
     padding:  20px 10px 10px 10px;
     font-size: 20px;
-    text-align: center;
     gap: 20px;
-    max-width:960px;
+    width: 100%;
+    max-width: 980px;
 }
+
 
 .home-card{
     display: flex;
@@ -65,6 +73,7 @@
     height:125px;
     align-items: center;
     gap:10px;
+    width: 100%;
 }
 
 .home-button-card button{
@@ -125,12 +134,11 @@
 
 @media (min-width:1400px){
 
-
     .home-card{
         display: flex;
         flex-direction: row;
         padding-left: 85px;
-        
+        height: 365px;
     }
 
     .home-card-image img{
@@ -140,6 +148,4 @@
     .home-card-content p{
         text-align: left;
     }
-
-
 }
