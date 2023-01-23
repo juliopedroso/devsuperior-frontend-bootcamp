@@ -5,7 +5,6 @@ const Catalog = () => {
 
     return (
 
-
         <div className="home-container">
             <div className="home-container-content">
 
@@ -13,20 +12,20 @@ const Catalog = () => {
                     <div className="row">
                         <div className="col-sm-12">
                             <div className="search-bar-container">
-                                <form className="form-inline">
-                                    <label>
-                                        <input type="text" name="name" placeholder="Digite sua busca" />
-                                    </label>
-                                    <input className="search-btn btn" type="submit" value="BUSCAR" />
-                                </form>
+                                <div className="input-group">
+                                    <input type="text" className="form-control" placeholder="Digite sua busca" aria-label="Digite sua busca" aria-describedby="basic-addon2" />
+                                    <div className="input-group-append">
+                                        <button className="btn" type="submit">BUSCAR</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
                     <div className="row">
                         <div className="col-sm-6 col-lg-4">
                             <ProductCard />
                         </div>
+
                         <div className="col-sm-6 col-lg-4 ">
                             <ProductCard />
                         </div>
@@ -46,10 +45,11 @@ const Catalog = () => {
                         <div className="col-sm-6 col-lg-4">
                             <ProductCard />
                         </div>
+
                         <div className="col-sm-6 col-lg-4">
                             <ProductCard />
                         </div>
-                        
+
                     </div>
 
                 </div>
