@@ -1,14 +1,10 @@
 import './App.css';
-import Home from './pages/Home';
-import NavBar from './components/NavBar';
-import Catalog from 'pages/Catalog';
+
+import Rotas from 'Rotas';
 
 function App() {
   return (
-    <>
-      <NavBar />
-      <Catalog />
-    </>
+    <Rotas />
 
   );
 }

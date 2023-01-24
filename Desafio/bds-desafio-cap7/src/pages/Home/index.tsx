@@ -1,4 +1,5 @@
 import MainImage from 'assets/images/main-image.png';
+import { Link } from 'react-router-dom';
 import './styles.css';
 
 const Home = () => {
@@ -18,9 +19,11 @@ const Home = () => {
                 </div>
 
                 <div className="home-button-card">
-                    <button className="btn">
-                        <h6>VER CATÁLOGO</h6>
-                    </button>
+                    <Link to="/products">
+                        <button className="btn">
+                            <h6>VER CATÁLOGO</h6>
+                        </button>
+                    </Link>
                     <h5>Comece agora a navegar</h5>
 
                 </div>
