@@ -1,4 +1,4 @@
-.home-container {
+/*.home-container {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -12,7 +12,7 @@
   width: 100%;
   max-width: 980px;
 }
-
+*/
 .search-bar-container {
   padding: 20px 10px 20px 10px;
   background-color: #ededed;
@@ -22,11 +22,17 @@
 
 
 
-.search-bar-container button {
-  border-radius: 0px 10px 10px 0px;
-  background-color: #00285f;
-  color: white;
+  .search-bar-container-btn, .search-bar-container-btn:hover, .search-bar-container-btn:active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color:#00285F;
+    border-radius: 0px 10px 10px 0px;
 }
+
+
+
 
 @media (min-width:576px){
     .search-bar-container{

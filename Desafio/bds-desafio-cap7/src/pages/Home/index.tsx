@@ -20,9 +20,9 @@ const Home = () => {
 
                 <div className="home-button-card">
                     <Link to="/products">
-                        <button className="btn">
+                        <div className="home-button-card-btn">
                             <h6>VER CATÁLOGO</h6>
-                        </button>
+                        </div>
                     </Link>
                     <h5>Comece agora a navegar</h5>
 

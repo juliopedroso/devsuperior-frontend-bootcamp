@@ -8,14 +8,14 @@ const Catalog = () => {
         <div className="home-container">
             <div className="home-container-content">
 
-                <div className="container my-4">
+                <div className="container">
                     <div className="row">
                         <div className="col-sm-12">
                             <div className="search-bar-container">
                                 <div className="input-group">
                                     <input type="text" className="form-control" placeholder="Digite sua busca" aria-label="Digite sua busca" aria-describedby="basic-addon2" />
                                     <div className="input-group-append">
-                                        <button className="btn" type="submit">BUSCAR</button>
+                                        <button className="btn search-bar-container-btn" type="submit">BUSCAR</button>
                                     </div>
                                 </div>
                             </div>
