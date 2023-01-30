@@ -13,7 +13,7 @@ const Home = () => {
           </div>
           <div>
             <Link to="/products">
-              <ButtonIcon />
+              <ButtonIcon text="Inicie test" />
             </Link>
           </div>
         </div>
