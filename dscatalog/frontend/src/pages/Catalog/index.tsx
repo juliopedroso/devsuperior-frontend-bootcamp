@@ -1,4 +1,5 @@
 import ProductCard from "pages/ProductCard";
+import { Link } from "react-router-dom";
 import { Product } from "types/product";
 
 const Catalog = () => {
@@ -12,11 +13,11 @@ const Catalog = () => {
         "date": "2020-07-14T10:00:00Z",
         "categories": [
             {
-                id:1,
-                name:'Livros',
+                id: 1,
+                name: 'Livros',
             },
             {
-                id:3,
+                id: 3,
                 name: 'Computadores',
             }
         ]
@@ -27,26 +28,38 @@ const Catalog = () => {
 
             <div className="row">
                 <div className="col-sm-6 col-lg-4 col-xl-3">
-                    <ProductCard product={product} />
+                    <Link to="/products/1">
+                        <ProductCard product={product} />
+                    </Link>
                 </div>
                 <div className="col-sm-6 col-lg-4 col-xl-3">
-                    <ProductCard product={product} />
-                </div>
-
-                <div className="col-sm-6 col-lg-4 col-xl-3">
-                    <ProductCard product={product} />
-                </div>
-
-                <div className="col-sm-6 col-lg-4 col-xl-3">
-                    <ProductCard product={product} />
+                    <Link to='/products/2'>
+                        <ProductCard product={product} />
+                    </Link>
                 </div>
 
                 <div className="col-sm-6 col-lg-4 col-xl-3">
-                    <ProductCard product={product} />
+                    <Link to='/products/3'>
+                        <ProductCard product={product} />
+                    </Link>
                 </div>
 
                 <div className="col-sm-6 col-lg-4 col-xl-3">
-                    <ProductCard product={product} />
+                    <Link to='/products/1'>
+                        <ProductCard product={product} />
+                    </Link>
+                </div>
+
+                <div className="col-sm-6 col-lg-4 col-xl-3">
+                    <Link to='/products/1'>
+                        <ProductCard product={product} />
+                    </Link>
+                </div>
+
+                <div className="col-sm-6 col-lg-4 col-xl-3">
+                    <Link to='/products/1'>
+                        <ProductCard product={product} />
+                    </Link>
                 </div>
 
             </div>
