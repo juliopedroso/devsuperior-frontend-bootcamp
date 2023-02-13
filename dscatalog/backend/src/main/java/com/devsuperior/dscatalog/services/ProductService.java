@@ -1,11 +1,13 @@
 package com.devsuperior.dscatalog.services;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
 import com.devsuperior.dscatalog.dto.ProductDTO;
+import com.devsuperior.dscatalog.entities.Category;
 import com.devsuperior.dscatalog.entities.Product;
 import com.devsuperior.dscatalog.repositories.CategoryRepository;
 import com.devsuperior.dscatalog.repositories.ProductRepository;
@@ -30,8 +32,8 @@ public class ProductService {
 
     @Transactional(readOnly = true)
     public List<ProductDTO> findAll() {
-        List<Product> list = repository.findAll();
-        return list.stream().map(ProductDTO::new).toList();
+        List<Product> page = repository.findAll();
+        return page.stream().map(ProductDTO::new).toList();
     }
 
     @Transactional(readOnly = true)
@@ -76,10 +78,13 @@ public class ProductService {
         }
 
     }
-
-    public Page<ProductDTO> findAllPaged(Pageable pageable) {
-        Page<Product> list = repository.findAll(pageable);
-        return list.map(ProductDTO::new);
+    
+    @Transactional(readOnly = true)
+    public Page<ProductDTO> findAllPaged(Long categoryId, String name, Pageable pageable) {
+        List<Category> categories = (categoryId == 0 ? null : Arrays.asList(categoryRepository.getById(categoryId)));
+        Page<Product> page = repository.find(categories, name, pageable);
+        repository.findProductsWithCategories(page.getContent());
+        return page.map(p -> new ProductDTO(p, p.getCategories()));
     }
 
     private void copyDtoToEntity(ProductDTO dto, Product entity) {

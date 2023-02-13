@@ -1,8 +1,10 @@
 import './styles.css';
 import 'bootstrap/js/src/collapse.js';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
+    const location = useLocation();
+    const state = location.state;
     return (
         <nav className="navbar navbar-expand-md navbar-dark bg-primary main-nav">
             <div className="container-fluid">
@@ -30,7 +32,7 @@ const Navbar = () => {
                             <NavLink to="/products" className={({ isActive }) => (isActive ? " active" : "")}>CATÁLOGO</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/admin" className={({ isActive }) => (isActive ? " active" : "")}>ADMIN</NavLink>
+                            <NavLink to="/admin" state={state} className={({ isActive }) => (isActive ? " active" : "")}>ADMIN</NavLink>
                         </li>
                     </ul>
                 </div>

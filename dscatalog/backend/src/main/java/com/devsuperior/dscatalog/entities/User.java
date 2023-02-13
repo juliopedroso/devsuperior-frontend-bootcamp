@@ -1,5 +1,6 @@
 package com.devsuperior.dscatalog.entities;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -32,7 +33,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Table(name="tb_user")
-public class User implements UserDetails {
+public class User implements UserDetails, Serializable {
 
     private static final long serialVersionUID = 1L;
 
