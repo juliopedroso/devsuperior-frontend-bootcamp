@@ -12,7 +12,7 @@ const Home = () => {
             <p>Ajudaremos você a encontrar os melhores produtos disponíveis no mercado.</p>
           </div>
           <div>
-            <Link to="/products">
+            <Link to="/">
               <ButtonIcon text="Inicie agora a sua busca" />
             </Link>
           </div>
