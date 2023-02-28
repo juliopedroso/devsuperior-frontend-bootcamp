@@ -10,13 +10,11 @@ const Auth = () => {
                 <AuthImage />
             </div>
             <div className="auth-form-container">
-
                 <Routes>
                     <Route path="login" element={<h1>Card de Login</h1>} />
                     <Route path="signup" element={<h1>Card de Signup</h1>} />
                     <Route path="recover" element={<h1>Card de Recover</h1>} />
                 </Routes>
-
             </div>
         </div>
     );
