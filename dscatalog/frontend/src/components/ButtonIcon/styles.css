@@ -4,6 +4,7 @@
 
 .btn-container button{
     border-radius: 10px 0px 0px 10px;
+    width: calc(100% - 50px);
 }
 
 .btn h6 {
@@ -26,14 +27,17 @@
 }
 
 @media (min-width: 576px){
+
+    .btn-container button{
+        width: calc(100% - 70px);
+    }
+
     .btn-icon-container{
         width: 70px;
         height: 70px;
 
     }
-    .btn h6 {
-        
+    .btn h6 {        
         font-size: 18px;
-        
     }
 }
