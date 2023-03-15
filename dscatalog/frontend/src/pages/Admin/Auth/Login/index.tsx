@@ -15,7 +15,7 @@ const Login = () => {
   const [hasError, setHasError] = useState(false);
 
 
-  const { register, handleSubmit, formState: {errors} } = useForm<FormData>();
+  const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
   const onSubmit = (formData: FormData) => {
 
@@ -35,7 +35,7 @@ const Login = () => {
       <h1>LOGIN</h1>
       {hasError &&
         <div className="alert alert-danger " >
-         Erro ao tentar efetuar o login
+          Erro ao tentar efetuar o login
         </div>
       }
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -46,13 +46,13 @@ const Login = () => {
           <input
             {...register("username", {
               required: 'Campo obrigatório',
-              pattern:{
-                value : /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                 message: 'Email inválido'
               }
             })}
             type="text"
-            className="form-control base-input"
+            className={`form-control base-input ${errors.username ? 'is-invalid' : ''}`}
             placeholder="Email"
             name="username"
 
@@ -65,7 +65,7 @@ const Login = () => {
               required: 'Campo obrigatório'
             })}
             type="password"
-            className="form-control base-input "
+            className={`form-control base-input ${errors.password ? 'is-invalid' : ''}`}
             placeholder="Password"
             name="password"
           />
