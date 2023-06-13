@@ -42,16 +42,15 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         //H2-console
         if (Arrays.asList(environment.getActiveProfiles()).contains("test")){
-            http.headers().frameOptions().disable();
+            http.headers(headers -> headers.frameOptions().disable());
         }
-
-        http.authorizeRequests()
-        .antMatchers(PUBLIC).permitAll()
-        .antMatchers(HttpMethod.GET, OPERATOR_OR_ADMIN).permitAll()
-        .antMatchers(OPERATOR_OR_ADMIN).hasAnyRole("OPERATOR","ADMIN")
-        .antMatchers(ADMIN).hasRole("ADMIN")
-        .anyRequest().authenticated();
-        http.cors().configurationSource(corsConfigurationSource());
+        http.authorizeRequests(requests -> requests
+                .antMatchers(PUBLIC).permitAll()
+                .antMatchers(HttpMethod.GET, OPERATOR_OR_ADMIN).permitAll()
+                .antMatchers(OPERATOR_OR_ADMIN).hasAnyRole("OPERATOR", "ADMIN")
+                .antMatchers(ADMIN).hasRole("ADMIN")
+                .anyRequest().authenticated());
+        http.cors(cors -> cors.configurationSource(corsConfigurationSource()));
     }
 
     @Bean

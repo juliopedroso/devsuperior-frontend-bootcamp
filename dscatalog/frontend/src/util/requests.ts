@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 import QueryString from "qs";
+import customHistory from "./customHistory";
 
 type LoginResponse = {
     access_token: string,
@@ -55,3 +56,28 @@ export const getAuthData = () => {
     const str = localStorage.getItem(tokenKey) ?? '{}';
     return JSON.parse(str) as LoginResponse;
 }
+
+axios.interceptors.request.use(function (response) {
+    console.log('INTERCEPTOR ANTES DA REQUISIÇÃO');
+    return response;
+}, function (error) {
+    console.log('INTERCEPTOR ERRO NA REQUISIÇÃO');
+    return Promise.reject(error);
+});
+
+axios.interceptors.response.use(function (response) {
+    console.log('INTERCEPTOR RESPOSTA COM SUCESSO');
+    return response;
+}, function (error) {
+    console.log('INTERCEPTOR RESPOSTA COM ERRO');
+
+    if (error.response.status === 401 || error.response.status === 403){
+        console.log('REDIRECIONADO POR ERRO NA AUTENTICAÇÃO');
+        customHistory.push("/error");
+        //window.location.href = "/admin/auth/login";
+//        navigate('/error')
+    }
+    
+    return Promise.reject(error);
+});
+
