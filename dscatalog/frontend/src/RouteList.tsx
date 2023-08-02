@@ -12,7 +12,7 @@ const RouteList = () => (
     <HistoryRouter history={history} >
         <Navbar />
         <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/*" element={<Home />} />
             <Route path="products" element={<Catalog />} />
             <Route path="products/:productId" element={<ProductDetails />} />
             <Route path="admin/" element={<Navigate to='/admin/products' />} />

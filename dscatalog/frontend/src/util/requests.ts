@@ -84,21 +84,25 @@ axios.interceptors.response.use(function (response) {
     // console.log('INTERCEPTOR RESPOSTA COM SUCESSO')
     return response;
 }, function (error) {
+    //console.log('INTERCEPTOR RESPOSTA COM ERRO')
     if (error.response.status === 401 || error.response.status === 403) {
-        console.log("Pushing to auth");
-        history.push('/admin/auth');        
+
+        history.push('/admin/auth');
     }
     return Promise.reject(error);
 });
 
-export const getTokenData = (): TokenData | undefined=> {
+export const getTokenData = (): TokenData | undefined => {
 
     const loginReponse = getAuthData();
     try {
-        return jwtDecode(loginReponse.access_token);        
-    } catch (error){
+        return jwtDecode(loginReponse.access_token);
+    } catch (error) {
         return undefined;
     }
+}
 
-
-} 
+export const isAuthenticated = (): boolean => {
+    const tokenData = getTokenData();
+    return (tokenData && tokenData.exp * 1000 > Date.now()) ? true : false;
+}
