@@ -29,7 +29,7 @@ const Login = () => {
         console.log(token);
         setHasError(false);
         console.log('SUCESSO', response);
-        history('/admin')
+        history('/admin');
       })
       .catch(error => {
         setHasError(true);

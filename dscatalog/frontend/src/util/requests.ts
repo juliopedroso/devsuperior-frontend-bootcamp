@@ -1,6 +1,18 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 import QueryString from "qs";
+import { useNavigate } from "react-router-dom";
+
+import { history } from "./history";
+import jwtDecode from "jwt-decode";
+type Role = 'ROLE_OPERATOR' | 'ROLE_ADMIN'
+
+type TokenData = {
+    exp: number;
+    user_name: string;
+    authorities: Role[];
+
+}
 
 type LoginResponse = {
     access_token: string,
@@ -18,6 +30,8 @@ const CLIENT_ID = process.env.REACT_APP_CLIENT_ID ?? "dscatalog";
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET ?? "dscatalog123";
 
 const basicHeader = () => 'Basic ' + window.btoa(CLIENT_ID + ":" + CLIENT_SECRET);
+
+
 
 type LoginData = {
     username: string;
@@ -55,3 +69,36 @@ export const getAuthData = () => {
     const str = localStorage.getItem(tokenKey) ?? '{}';
     return JSON.parse(str) as LoginResponse;
 }
+
+// Add a request interceptor
+axios.interceptors.request.use(function (config) {
+    //console.log('INTERCEPTOR ANTES DA REQUISIÇÃO')
+    return config;
+}, function (error) {
+    //console.log('INTERCEPTOR ERRO NA REQUISIÇÃO')
+    return Promise.reject(error);
+});
+
+// Add a response interceptor
+axios.interceptors.response.use(function (response) {
+    // console.log('INTERCEPTOR RESPOSTA COM SUCESSO')
+    return response;
+}, function (error) {
+    if (error.response.status === 401 || error.response.status === 403) {
+        console.log("Pushing to auth");
+        history.push('/admin/auth');        
+    }
+    return Promise.reject(error);
+});
+
+export const getTokenData = (): TokenData | undefined=> {
+
+    const loginReponse = getAuthData();
+    try {
+        return jwtDecode(loginReponse.access_token);        
+    } catch (error){
+        return undefined;
+    }
+
+
+} 
