@@ -3,7 +3,7 @@ import ButtonIcon from 'components/ButtonIcon';
 import { useForm } from 'react-hook-form';
 
 import './styles.css';
-import { requestBackendLogin } from 'util/requests';
+import { getAuthData, requestBackendLogin, saveAuthData } from 'util/requests';
 import { useState } from 'react';
 
 type FormData = {
@@ -12,11 +12,14 @@ type FormData = {
 }
 const Login = () => {
   const [hasError, setHasError] = useState(false);
-  const { register, handleSubmit, formState: {errors} } = useForm<FormData>();
+  const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
   const onSubmit = (formData: FormData) => {
     requestBackendLogin(formData)
       .then(response => {
+        saveAuthData(response.data);
+        const token = getAuthData().access_token;
+        console.log('TOKEEN GERADO: ' + token);
         setHasError(false);
         console.log('SUCESSO', response);
       })
@@ -37,15 +40,15 @@ const Login = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
           <input
-            {...register('username',{
+            {...register('username', {
               required: 'Campo obrigatório',
               pattern: {
-                value:/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message:'Email inválido'
-              } 
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Email inválido'
+              }
             })}
             type="text"
-            className={`form-control base-input ${errors.username ? 'is-invalid':''}`}
+            className={`form-control base-input ${errors.username ? 'is-invalid' : ''}`}
             placeholder="Email"
             name="username"
           />
@@ -53,15 +56,15 @@ const Login = () => {
         </div>
         <div className="mb-2">
           <input
-            {...register('password',{
-              required: 'Campo obrigatório'             
+            {...register('password', {
+              required: 'Campo obrigatório'
             })}
             type="password"
-            className={`form-control base-input ${errors.password ? 'is-invalid':''}`}
+            className={`form-control base-input ${errors.password ? 'is-invalid' : ''}`}
             placeholder="Password"
             name="password"
           />
-           <div className="invalid-feedback d-block">{errors.password?.message}</div>
+          <div className="invalid-feedback d-block">{errors.password?.message}</div>
         </div>
         <Link to="/admin/auth/recover" className="login-link-recover">
           Esqueci a senha
@@ -75,7 +78,7 @@ const Login = () => {
             CADASTRAR
           </Link>
         </div>
-      </form> 
+      </form>
     </div>
   );
 };
