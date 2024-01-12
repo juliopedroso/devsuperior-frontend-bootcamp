@@ -1,19 +1,15 @@
+import { AuthContextData } from 'AuthContext';
 import './styles.css';
 import 'bootstrap/js/src/collapse.js';
 import { useEffect, useState } from 'react';
 
 import { Link, NavLink } from 'react-router-dom';
 import history from 'util/history';
-import { TokenData, getTokenData, isAuthenticated, removeAuthData } from 'util/requests';
-
-type AuthData = {
-  authenticated: boolean,
-  tokenData?: TokenData
-}
+import { getTokenData, isAuthenticated, removeAuthData } from 'util/requests';
 
 const Navbar = () => {
 
-  const [authData, setAuthData] = useState<AuthData>({ authenticated: false });
+  const [authData, setAuthData] = useState<AuthContextData>({ authenticated: false });
 
   useEffect(() => {
     if (isAuthenticated()) {
