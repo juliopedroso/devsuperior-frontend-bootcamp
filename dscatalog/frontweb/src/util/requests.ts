@@ -5,9 +5,9 @@ import jwtDecode from "jwt-decode";
 
 type Role = 'ROLE_OPERATOR' | 'ROLE_ADMIN'
 
-type TokenData = {
+export type TokenData = {
     exp: number,
-    user_name : string,
+    user_name: string,
     authorities: Role
 }
 
@@ -56,6 +56,10 @@ export const requestBackend = (config: AxiosRequestConfig) => {
     return axios({ ...config, baseURL: BASE_URL, headers });
 }
 
+export const removeAuthData = () => {
+    localStorage.removeItem(tokenKey);
+}
+
 export const saveAuthData = (obj: LoginResponse) => {
     localStorage.setItem(tokenKey, JSON.stringify(obj));
 }
@@ -83,15 +87,15 @@ axios.interceptors.response.use(function (response) {
     return Promise.reject(error);
 });
 
-export const getTokenData = () : TokenData | undefined => {
+export const getTokenData = (): TokenData | undefined => {
     try {
-        return jwtDecode(getAuthData().access_token);    
+        return jwtDecode(getAuthData().access_token);
     } catch (error) {
         return undefined;
     }
 };
 
-export const isAuthenticated = () : boolean => {
+export const isAuthenticated = (): boolean => {
     const tokenData = getTokenData();
-    return !!((tokenData  && tokenData.exp * 1000 > Date.now()));
+    return !!((tokenData && tokenData.exp * 1000 > Date.now()));
 }
