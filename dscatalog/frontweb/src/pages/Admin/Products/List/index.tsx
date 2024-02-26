@@ -10,8 +10,8 @@ import { requestBackend } from "util/requests";
 
 const List = () => {
 
-    const [page, setPage] = useState<SpringPage<Product>>();
-
+    const [page, setPage] = useState<SpringPage<Product>>();    
+    
     useEffect(() => {
         const config: AxiosRequestConfig = {
             method: 'GET',
