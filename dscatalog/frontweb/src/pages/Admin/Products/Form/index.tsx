@@ -10,11 +10,11 @@ const Form = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<Product>();
     const onSubmit = (formData: Product) => {
 
-        const data = { ...formData, 
+        const data = {
+            ...formData,
             imgUrl: "https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/25-big.jpg",
-            categories: [{id:1, name: ""}]
+            categories: [{ id: 1, name: "" }]
         }
-
 
         const config: AxiosRequestConfig = {
             method: 'POST',
@@ -24,9 +24,8 @@ const Form = () => {
         };
 
         requestBackend(config)
-            .then(response => {
-                console.log(response.data);
-
+            .then(() => {
+                history.push("/admin/products");
             });
     };
 
