@@ -31,8 +31,6 @@ const ProductCrudCard = ({ product, onDelete }: Props) => {
         })
     }
 
-
-
     return (
         <div className="base-card product-crud-card">
             <div className="product-crud-card-top-container">
