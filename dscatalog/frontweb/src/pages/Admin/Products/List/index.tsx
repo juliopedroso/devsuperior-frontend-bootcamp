@@ -7,6 +7,7 @@ import { SpringPage } from "types/vendor/spring";
 import { useEffect, useState } from "react";
 import { AxiosRequestConfig } from "axios";
 import { requestBackend } from "util/requests";
+import Pagination from "components/Pagination";
 
 const List = () => {
 
@@ -52,6 +53,9 @@ const List = () => {
                 }
 
             </div>
+            <Pagination
+            
+            />
         </div>
     )
 }
