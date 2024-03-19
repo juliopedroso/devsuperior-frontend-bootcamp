@@ -8,17 +8,32 @@ import { requestBackend } from 'util/requests';
 
 type ProductFilterData = {
     name: string,
-    category: Category
+    category: Category | null
 }
 
 const ProductFilter = () => {
 
     const [selectCategories, setSelectCategories] = useState<Category[]>([]);
 
-    const { register, handleSubmit, control } = useForm<ProductFilterData>();
+    const { register, handleSubmit, control, setValue, getValues } = useForm<ProductFilterData>();
     const onSubmit = (formData: ProductFilterData) => {
         console.log("ENVIOU", formData);
     };
+    const handleFormClear = () => {
+        setValue('name', '');
+        setValue('category', null);
+
+    }
+    const handleChangeCategory = (value: Category) => {
+        setValue('category', value);
+
+        const obj: ProductFilterData = {
+            name: getValues('name'),
+            category: getValues('category')
+        }
+        console.log("ENVIOU", obj);
+    }
+
     useEffect(() => {
         requestBackend({ url: '/categories/' })
             .then((response) => {
@@ -26,6 +41,9 @@ const ProductFilter = () => {
             });
 
     }, [setSelectCategories]);
+
+
+
     return (
         <div className="base-card product-filter-container">
             <form onSubmit={handleSubmit(onSubmit)} className='product-filter-form'>
@@ -54,13 +72,19 @@ const ProductFilter = () => {
                                     classNamePrefix="product-filter-select"
                                     isClearable
                                     placeholder="Categoria"
+                                    onChange={value => handleChangeCategory(value as Category)}
                                     getOptionLabel={(category: Category) => category.name}
                                     getOptionValue={(category: Category) => String(category.id)}
                                 />
                             )}
                         />
                     </div>
-                    <button className='btn btn-outline-secondary btn-product-filter-clear'>LIMPAR <span className='btn-product-filter-word'>FILTRO</span></button>
+                    <button
+                        className='btn btn-outline-secondary btn-product-filter-clear'
+                        onClick={handleFormClear}
+                    >
+                        LIMPAR <span className='btn-product-filter-word'>FILTRO</span>
+                    </button>
                 </div>
             </form>
         </div>
@@ -68,3 +92,4 @@ const ProductFilter = () => {
 }
 
 export default ProductFilter;
+
