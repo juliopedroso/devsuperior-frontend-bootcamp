@@ -4,14 +4,16 @@ import './styles.css';
 import ReactPaginate from 'react-paginate';
 
 type Props = {
+  forgePage?:number
   pageCount: number;
   range: number;
   onChange?: (pageNumber: number) => void;
 }
 
-const Pagination = ({ pageCount, range, onChange }: Props) => {
+const Pagination = ({ forgePage, pageCount, range, onChange }: Props) => {
   return (
     <ReactPaginate
+      forcePage={forgePage}
       pageCount={pageCount}
       pageRangeDisplayed={range}
       marginPagesDisplayed={1}
