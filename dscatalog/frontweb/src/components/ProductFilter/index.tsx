@@ -23,11 +23,12 @@ const ProductFilter = ({ onSubmitFilter }: Props) => {
     const onSubmit = (formData: ProductFilterData) => {
         onSubmitFilter(formData);
     };
+
     const handleFormClear = () => {
         setValue('name', '');
         setValue('category', null);
+    };
 
-    }
     const handleChangeCategory = (value: Category) => {
         setValue('category', value);
 

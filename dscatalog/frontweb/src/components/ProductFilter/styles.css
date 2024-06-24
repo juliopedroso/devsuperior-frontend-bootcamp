@@ -73,12 +73,14 @@
   .btn-product-filter-word {
     display: none;
   }
+  
   .product-filter-container {
     margin-left: 20px;
     flex: 1;
     margin-bottom: 0px;
     padding: 10px 15px;
   }
+
   .product-filter-form {
     display: flex;
   }
