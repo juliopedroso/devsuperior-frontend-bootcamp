@@ -5,7 +5,9 @@ import { useContext, useEffect } from 'react';
 
 import { Link, NavLink } from 'react-router-dom';
 import history from 'util/history';
-import { getTokenData, isAuthenticated, removeAuthData } from 'util/requests';
+import {  removeAuthData } from 'util/requests';
+import { getTokenData } from 'util/token';
+import { isAuthenticated } from 'util/auth';
 
 const Navbar = () => {
 

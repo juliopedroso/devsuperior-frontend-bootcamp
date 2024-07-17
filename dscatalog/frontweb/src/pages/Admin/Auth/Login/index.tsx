@@ -3,9 +3,11 @@ import ButtonIcon from 'components/ButtonIcon';
 import { useForm } from 'react-hook-form';
 
 import './styles.css';
-import { getTokenData, isAuthenticated, requestBackendLogin, saveAuthData } from 'util/requests';
+import {   requestBackendLogin, saveAuthData } from 'util/requests';
 import { useContext, useState } from 'react';
 import { AuthContext } from 'AuthContext';
+import { getTokenData } from 'util/token';
+import { isAuthenticated } from 'util/auth';
 
 type CredentialDTO = {
   username: string;
