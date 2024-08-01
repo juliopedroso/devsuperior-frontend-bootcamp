@@ -4,7 +4,7 @@ import './styles.css';
 import ReactPaginate from 'react-paginate';
 
 type Props = {
-  forgePage?:number
+  forgePage?: number
   pageCount: number;
   range: number;
   onChange?: (pageNumber: number) => void;
@@ -23,10 +23,10 @@ const Pagination = ({ forgePage, pageCount, range, onChange }: Props) => {
       previousClassName='arrow-previous'
       nextClassName='arrow-next'
       activeLinkClassName='pagination-link-active'
-      previousLabel={<div className='pagination-arrow-container'><ArrowIcon /></div>}
-      nextLabel={<div className='pagination-arrow-container'><ArrowIcon /></div>}
+      previousLabel={<div className='pagination-arrow-container' data-testid='arrow-previous'><ArrowIcon /></div>}
+      nextLabel={<div className='pagination-arrow-container' data-testid='arrow-next'><ArrowIcon /></div>}
       disabledClassName='arrow-inactive'
-      onPageChange={(items) => (onChange) ?onChange(items.selected):{}}
+      onPageChange={(items) => (onChange) ? onChange(items.selected) : {}}
     />
   );
 };
