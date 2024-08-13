@@ -35,7 +35,7 @@ test('should render Catalog with products', async () => {
     expect(screen.getByText("Catálogo de produtos")).toBeInTheDocument();
 
     await waitFor(() => {
-        expect(screen.getByText("Smart TV")).toBeInTheDocument()
+        expect(screen.getByText("PC Gamer Max")).toBeInTheDocument()
     });
 
 
