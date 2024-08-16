@@ -4,20 +4,11 @@ import { Router } from "react-router-dom";
 import history from "util/history";
 import { server } from './fixtures';
 
-beforeAll(() => {
-    console.debug('Before all')
-    server.listen()
-})
+beforeAll(() => { server.listen() })
 
-afterEach(() => {
-    console.debug('after each')
-    server.resetHandlers()
-})
+afterEach(() => { server.resetHandlers() })
 
-afterAll(() => {
-    console.debug('after all')
-    server.close()
-})
+afterAll(() => { server.close() })
 
 test('should render Catalog with products', async () => {
 
