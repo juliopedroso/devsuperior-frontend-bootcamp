@@ -34,7 +34,7 @@ describe('Product form create tests', () => {
         //ACT
         render(
             <Router history={history}>
-                <ToastContainer/>
+                <ToastContainer />
                 <Form />
             </Router >
         )
@@ -57,14 +57,43 @@ describe('Product form create tests', () => {
         userEvent.click(submitButton);
 
         await waitFor(() => {
+            screen.getByRole('toastify', { name: /Produto cadastrado com sucesso/i })
             const toastElement = screen.getByText('Produto cadastrado com sucesso');
             expect(toastElement).toBeInTheDocument();
 
         });
 
-        expect(history.location.pathname).toEqual('/admin/products');
-        
 
-        
+        expect(history.location.pathname).toEqual('/admin/products');
+
+
+
+    });
+
+
+    test('Should show 5 validation messages when just clicking in validation and redirect when submit form correctly', async () => {
+
+        //ARRANGE
+
+        //ACT
+        render(
+            <Router history={history}>
+                <ToastContainer />
+                <Form />
+            </Router >
+        )
+
+        //ASSERT
+
+        const submitButton = screen.getByRole("button", { name: /Salvar/i });
+
+        userEvent.click(submitButton);
+
+        const messages = screen.getAllByText('Campo obrigatório');
+
+        await waitFor(() => {
+            expect(messages).toHaveLength(5);
+        });
+
     });
 });
