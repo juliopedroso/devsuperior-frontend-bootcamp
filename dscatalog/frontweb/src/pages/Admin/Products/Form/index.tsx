@@ -47,22 +47,25 @@ const Form = () => {
 
     const onSubmit = (formData: Product) => {
 
-        const data = { ...formData, price: String(formData.price).replace(',', '.') }
+        const data = {
+            ...formData,
+            price: String(formData.price).replace(',', '.'),
+        };
 
         const config: AxiosRequestConfig = {
             method: isEditing ? 'PUT' : 'POST',
             url: isEditing ? `/products/${productId}` : '/products',
             data,
-            withCredentials: true
+            withCredentials: true,
         };
 
         requestBackend(config)
             .then(() => {
-                toast.info('Produto cadastrado com sucesso.')
-                history.push("/admin/products");
+                toast.info('Produto cadastrado com sucesso');
+                history.push('/admin/products');
             })
             .catch(() => {
-                toast.error('Erro ao cadastrar o produto.')
+                toast.error('Erro ao cadastrar o produto');
             })
             ;
     };
@@ -75,7 +78,7 @@ const Form = () => {
         <div className="product-crud-container">
             <div className="base-card product-crud-form-card">
                 <h1 className='product-crud-form-title'>DADOS DO PRODUTO</h1>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} data-testid="form">
                     <div className="row product-crud-inputs-container">
                         <div className="col-lg-6 product-crud-inputs-left-container">
                             <div className="margin-bottom-30">
@@ -164,9 +167,9 @@ const Form = () => {
                                     })}
                                     className={`form-control base-input h-auto ${errors.description ? 'is-invalid' : ''}`}
                                     placeholder="Descrição"
-                                    name="description" 
+                                    name="description"
                                     data-testid="description"
-                                    />
+                                />
                                 <div className="invalid-feedback d-block">{errors.description?.message}</div>
                             </div>
                         </div>
