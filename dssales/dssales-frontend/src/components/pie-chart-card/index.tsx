@@ -3,12 +3,12 @@ import './styles.css';
 import { buildPieChartConfig } from './helpers';
 
 type props = {
-  labels: string[];
+  labels?: string[];
   name: string;
-  series: number[];
+  series?: number[];
 };
 
-function PieChartCard({ name, labels, series }: props) {
+function PieChartCard({ name, labels = [], series = [] }: props) {
   return (
     <div className="pie-chart-card base-card">
       <ReactApexChart
